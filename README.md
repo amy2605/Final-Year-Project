@@ -1,13 +1,13 @@
-[2308-CS230] 2020846974 (06) NUR AMIELIA NATASHA BINTI MOHAMAD NAZLI 
+NUR AMIELIA NATASHA BINTI MOHAMAD NAZLI 
 Real-Time Personal Protective Equipment (PPE) Compliance Detection System Using You Only Look Once Version 5
 
 
 #########################################################################################################
-#													#
-#													#
-#				S	E	T	U	P					#
-#													#
-#													#
+#													                                                                              #
+#												                                                                              	#
+#			                                 	S	E	T	U	P					                                              #
+#												                                                                               	#
+#												                                                                              	#
 #########################################################################################################
 
 PS: For easier process use different environment
