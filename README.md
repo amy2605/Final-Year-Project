@@ -1,14 +1,8 @@
 NUR AMIELIA NATASHA BINTI MOHAMAD NAZLI 
 Real-Time Personal Protective Equipment (PPE) Compliance Detection System Using You Only Look Once Version 5
 
-
-#########################################################################################################
-#													                                                                              #
 #												                                                                              	#
 #			                                 	S	E	T	U	P					                                              #
-#												                                                                               	#
-#												                                                                              	#
-#########################################################################################################
 
 PS: For easier process use different environment
 Software Used: Anaconda, Visual Studio Code, MATLAB
