@@ -1,4 +1,3 @@
-NUR AMIELIA NATASHA BINTI MOHAMAD NAZLI 
 Real-Time Personal Protective Equipment (PPE) Compliance Detection System Using You Only Look Once Version 5
 
 #												                                                                              	#
