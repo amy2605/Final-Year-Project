@@ -1,0 +1,107 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
+
+.bg-dark {
+  background-color: #FFBF00 !important;
+  width: 100%;
+}
+
+.navbar-dark .navbar-nav .nav-link.active{
+  color: black !important;
+  font-weight: bold !important;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: black !important;
+}
+
+.li {
+	display: inline-block !important;
+	float: none !important;
+}
+
+.header{
+  top: 0;
+	left: 0;
+	width: 100%;
+  margin-top: 0;
+  display: flex;
+  position: fixed;
+  background-color: #FFBF00 !important;
+}
+
+.navbar-expand-lg .navbar-collaps{
+	text-align: center !important;
+  color: black !important;
+}
+
+.px-3{
+  color: black !important;
+}
+
+
+.li {
+	display: inline-block !important;
+	float: none !important;
+}
+
+.title {
+	font-family: cambria;
+  color: black;
+}
+
+
+body {
+  margin-top: 0%;
+  background-color: black;
+}
+
+
+
+.row.py-5 {
+  justify-content: center;
+ 
+}
+
+.border {
+  border: none !important; 
+}
+
+.py-3 {
+	background-color: black !important;
+	 width: 100% !important;
+	 border-radius: 90px;
+
+}
+
+.py-4 {
+	background-color: white !important;
+	 width: 100% !important;
+	 border-radius: 90px;
+
+}
+
+
+.input {
+  padding: 0.5rem;
+  width: 95%;
+  border-radius: 18px;
+  font-size: 18px;
+  border: 3px solid;
+  border-color: black;
+}
+
+.input:nth-last-child(-n + 2) {
+  margin-bottom: 0.5rem;
+  width: 100%;
+  background: black;
+  color:  #FFFFFF;
+}
+
+
+
+
+
+
+
+
+

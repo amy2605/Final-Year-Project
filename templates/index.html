@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <script src="https://kit.fontawesome.com/9ed6a12a9d.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" >
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" ></script>  
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style.css')}}">
+    <link rel="shortcut icon" type="x-icon" href="{{ url_for('static',filename='uitmlogo.ico')}}">"
+
+    <title>Real-Time PPE Detection Using YOLO Algorithm</title>
+  </head>
+  
+  <body>
+    <header class="container-fluid bg-dark" style="background-color: #FFBF00;"> 
+      <div id="top" class="top bg-primary text-light bg-dark">
+        <div class="container">
+          <div class="row py-1">
+            <div class="col-12 col-lg-6">
+              <p class="m-0" style="color: black;"><b>NUR AMIELIA NATASHA BINTI MOHAMAD NAZLI</b></p>
+            </div>
+            <div class="col-12 col-lg-6">
+              <p class="text-lg-end m-0" style="color: black;"><b>2020846974</b></p>
+            </div>
+          </div>
+        </div>
+      </div><br><br>
+      <!-- end top -->
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="width: 100%;">
+        <div class="container">
+          <a class="navbar-brand" href="/">
+            <img width="55px" src="{{ url_for('static',filename='uitm.png')}}" alt="Code">
+            <b class="title">&nbsp;PPE DETECTION</b>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      
+          <b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</b>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+            <li class="nav-item px-3">
+              <a class="nav-link active"  aria-current="page"href="/">Home</a>
+            </li>
+            <li class="nav-item px-3">
+              <a class="nav-link " aria-current="page" href="#about">About</a>
+            </li>
+            <li class="nav-item px-3">
+              <a class="nav-link " aria-current="page" href="#detection">Detection</a>
+            </li>
+            <li class="nav-item px-3">
+              <a class="nav-link " aria-current="page" href="/report" onclick="showPopUp()">Report</a>
+            </li>
+          </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <br><br>
+
+
+    <section id="about" class="container-fluid">
+      <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators d-none d-lg-flex">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="{{ url_for('static',filename='info.jpg')}}" class="d-block w-100" alt="Slide 1">
+          </div>
+          <div class="carousel-item">
+            <img src="{{ url_for('static',filename='instruction.jpg')}}" class="d-block w-100" alt="Slide 2">
+          </div>
+          <div class="carousel-item">
+            <img src="{{ url_for('static',filename='by.jpg')}}" class="d-block w-100" alt="Slide 3">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </section>
+
+    <section id="detection" class="bg-hi container-fluid" >
+    <div class="container py-3">  
+      <div class="row py-5">
+  
+    
+        <div class="col-md-6 col-12 col-lg-3 mb-4">
+              <img src="{{ url_for('video_feed') }}">
+        </div><br>&emsp;&emsp;&emsp;&emsp;
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</br>
+  
+        <div class="col-md-6 col-12 col-lg-3 mb-4">
+            <div class="text-center" style="color: white;">
+              <br><br><br><br><br>
+              <h1 id="current-time" style="color: white;"></h1><br><br>
+              <h1 id="status" style="color: white;">Status: </h1>
+              <p id="item" style="color: white;">Item: </p>
+            </div>
+        </div>
+
+        
+      </div>
+    </div>
+    </section>
+
+    <!--Script to display the time, date and retrieve data for status and item-->
+    <script>
+        let dateTimeElement = document.getElementById("current-time");
+        let statusElement = document.getElementById("status");
+        let itemElement = document.getElementById("item");
+
+        function updateTimeAndDate() {
+          let currentDate = new Date();
+          let day = currentDate.getDate();
+          let month = currentDate.getMonth() + 1;
+          let year = currentDate.getFullYear();
+          let hours = currentDate.getHours();
+          let minutes = currentDate.getMinutes();
+          let seconds = currentDate.getSeconds();
+
+          // Add leading zeros if needed
+          day = day < 10 ? "0" + day : day;
+          month = month < 10 ? "0" + month : month;
+          hours = hours < 10 ? "0" + hours : hours;
+          minutes = minutes < 10 ? "0" + minutes : minutes;
+          seconds = seconds < 10 ? "0" + seconds : seconds;
+
+          let dateTimeString = day + "/" + month + "/" + year + " " + hours + ":" + minutes + ":" + seconds;
+          dateTimeElement.textContent = dateTimeString;
+        }
+        // Call the updateTimeAndDate function initially
+        updateTimeAndDate();
+        setInterval(updateTimeAndDate, 1000);
+
+        // retrieve data for status and item
+        function updateData() {
+          fetch('/update_data')
+            .then(response => response.json())
+            .then(data => {
+              statusElement.textContent = "Status: " + data.status;
+              itemElement.textContent = "Item: " + data.item;
+            })
+            .catch(error => {
+              console.error('Error:', error);
+            });
+        }
+
+        // Call the updateData function initially
+        updateData();
+        setInterval(updateData, 1000);
+
+        // window pop up for message
+        function showPopUp() {
+          alert("NOTE: The Pie Chart will be updated whenever the detection process is redone. To obtain the most recent detection, kindly click on the 'Print' button.");
+        }
+
+    </script>
+
+    <!--Create footer-->
+    <footer class="py-5 bg-dark text-light">
+      <div class="row pb-5">
+        <div class="col-12 text-center">
+          <a href="#top"><img src="{{ url_for('static',filename='top.png')}}" alt=""></a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
